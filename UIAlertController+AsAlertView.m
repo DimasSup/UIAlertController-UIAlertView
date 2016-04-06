@@ -70,14 +70,17 @@
 	UIAlertController* controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
 	
 	NSMutableArray *tmplist = [NSMutableArray arrayWithObject:otherButtonTitles];
-	va_list args;
-	va_start(args,otherButtonTitles);
-	
-	id arg;
-	while((arg = va_arg(args, id)) != nil)
-		[tmplist addObject:arg];
-	
-	va_end(args);
+	if(otherButtonTitles!=nil)
+	{
+		va_list args;
+		va_start(args,otherButtonTitles);
+		
+		id arg;
+		while((arg = va_arg(args, id)) != nil)
+			[tmplist addObject:arg];
+		
+		va_end(args);
+	}
 	int c = 0;
 	
 	if(tmplist.count<=1)
